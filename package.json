@@ -1,0 +1,22 @@
+{
+  "name": "obd2-server",
+  "version": "1.0.0",
+  "description": "Servidor OBDII",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sergiorg96/obd2-server.git"
+  },
+  "keywords": [
+    "obd2-server"
+  ],
+  "author": "Sergio Román González",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sergiorg96/obd2-server/issues"
+  },
+  "homepage": "https://github.com/sergiorg96/obd2-server#readme"
+}
