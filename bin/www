@@ -8,6 +8,28 @@ var app = require('../app');
 var debug = require('debug')('obd2-server:server');
 var http = require('http');
 
+var dgram = require('dgram');
+var socketUDP = dgram.createSocket('udp4');
+
+var PORT = 33333;
+var HOST = '127.0.0.1';
+
+socketUDP.on('error', (err) => {
+  console.log(`Error en el servidor:\n${err.stack}`);
+  socketUDP.close();
+});
+
+socketUDP.on('listening', () => {
+  const address = socketUDP.address();
+  console.log(`Servidor escuchando en ${address.address}:${address.port}`);
+});
+
+socketUDP.on('message', (msg, rinfo) => {
+  console.log(`Mensaje recibido: ${msg} de la dirección ${rinfo.address}:${rinfo.port}`);
+});
+
+socketUDP.bind(PORT, HOST);
+
 /**
  * Get port from environment and store in Express.
  */
