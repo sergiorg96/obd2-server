@@ -14,6 +14,8 @@ var socketUDP = dgram.createSocket('udp4');
 var PORT = 33333;
 var HOST = '127.0.0.1';
 
+
+// Servidor UDP para la recepción de datos
 socketUDP.on('error', (err) => {
   console.log(`Error en el servidor:\n${err.stack}`);
   socketUDP.close();
