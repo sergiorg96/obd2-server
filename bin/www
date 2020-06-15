@@ -5,6 +5,8 @@
  */
 
 var app = require('../app');
+const mongoose = require('../dbmodels/mongoose');
+const modelDTC = mongoose.model('DTC');
 var debug = require('debug')('obd2-server:server');
 var http = require('http');
 
@@ -28,6 +30,23 @@ socketUDP.on('listening', () => {
 
 socketUDP.on('message', (msg, rinfo) => {
   console.log(`Mensaje recibido: ${msg} de la dirección ${rinfo.address}:${rinfo.port}`);
+
+  try{
+    var jsonDTC = JSON.parse(msg);
+  } catch (e) {
+    console.log(e.name)
+  }
+  const dtc = new modelDTC(jsonDTC);
+
+  dtc.save()
+    .then(() => { console.log('Dato almacenado correctamente!'); })
+    .catch((err) => {
+      console.log(err);
+      //res.send('Sorry! Something went wrong.');
+    });
+
+  console.log(`Descripción del DTC: ${dtc.description}`);
+
 });
 
 socketUDP.bind(PORT, HOST);

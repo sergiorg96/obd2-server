@@ -29,14 +29,14 @@ html(lang='en')
 				#navbar.collapse.navbar-collapse
 					ul.nav.navbar-nav
 						li.active
-							a(href='#') Home
+							a(href='/') Home
 						li
-							a(href='#') About
+							a(href='/vehicles') Vehículos
 						li
-							a(href='#') Contact
+							a(href='#') Contacto
 						li.dropdown
 							a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
-								| Dropdown 
+								| Opciones 
 								span.caret
 							ul.dropdown-menu
 								li
@@ -55,24 +55,12 @@ html(lang='en')
 		// /.nav-collapse
 		// Begin page content
 		.container
-			.page-header
-				h1 Sticky footer with fixed navbar
-			p.lead
-				| Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added with 
-				code padding-top: 60px;
-				|  on the 
-				code body > .container
-				| .
-			p
-				| Back to 
-				a(href='../sticky-footer/') the default sticky footer
-				|  minus the navbar.
-			
-			block content
+			block headerBlock
+			block contentBlock
 
 		footer.footer
 			.container
-				p.text-muted Place sticky footer content here.
+				p.text-muted Sergio Román González - 2020
 			
 		//Bootstrap core JavaScript
 			==================================================
