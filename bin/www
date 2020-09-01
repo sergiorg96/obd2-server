@@ -25,7 +25,7 @@ socketUDP.on('error', (err) => {
 
 socketUDP.on('listening', () => {
   const address = socketUDP.address();
-  console.log(`Servidor escuchando en ${address.address}:${address.port}`);
+  console.log(`Servidor UDP escuchando en ${address.address}:${address.port}`);
 });
 
 socketUDP.on('message', (msg, rinfo) => {
