@@ -1,0 +1,34 @@
+extends layout
+
+block contentBlock
+	p.lead
+		| Lista de vehículos con DTC (Diagnostic Trouble Codes)
+	if dtcs.length
+		table(class="text-center", style='width:100%', border='1')
+			tr
+				th(class="text-center") Fecha
+				th(class="text-center") Vehículo
+				th(class="text-center") Código DTC
+				th(class="text-center") Coordenadas
+				th(class="text-center") Descripción
+				th(class="text-center") Eliminar alerta
+			each dtc in dtcs			
+				tr
+					td= dtc.date
+					td= dtc.vehicle
+					td= dtc.code
+					td= dtc.coordinates
+					td
+						a(href=dtc.description) Descripción #{dtc.code}
+					td
+						form(method='POST' action='/vehicles/deleteVehicle')
+							input(type='hidden', name='vehicleName', value=dtc.vehicle)
+							input(type='hidden', name='dtcCode', value=dtc.code)
+							button(type="submit") X
+	else
+		p No hay ningún vehículo con DTC.
+
+block headerBlock
+	.page-header
+		h1= header
+
